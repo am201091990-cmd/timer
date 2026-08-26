@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Birthday Surprise 🎂</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-balloon balloon-one">🎈</div>
+        <div class="login-balloon balloon-two">🎈</div>
+
+        <div class="cake-small">🎂</div>
+
+        <h1>Birthday Surprise</h1>
+
+        <p class="login-subtitle">
+            Enter your username and password
+            to open the surprise.
+        </p>
+
+        <% if (error) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form method="POST" action="/login">
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Username"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit">
+                Open Surprise 💝
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

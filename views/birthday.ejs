@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        <%= birthday.isBirthday
+            ? "Happy Birthday Aishu 🎂"
+            : "Birthday Countdown 🎈" %>
+    </title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="background-balloons">
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+        <span>🎈</span>
+    </div>
+
+    <main class="birthday-container">
+
+        <% if (birthday.isBirthday) { %>
+
+            <!-- ========================= -->
+            <!-- BIRTHDAY DAY -->
+            <!-- ========================= -->
+
+            <section class="birthday-card">
+
+                <div class="confetti">
+                    🎉 ✨ 🎊 💖 🎉 ✨ 🎊
+                </div>
+
+                <div class="balloons">
+                    <span class="balloon red">🎈</span>
+                    <span class="balloon blue">🎈</span>
+                    <span class="balloon yellow">🎈</span>
+                    <span class="balloon pink">🎈</span>
+                </div>
+
+                <p class="small-title">
+                    September 1 ❤️
+                </p>
+
+                <h1 class="happy-birthday">
+                    Happy Birthday Aishu! 🎂
+                </h1>
+
+                <div class="cake">
+                    🎂
+                </div>
+
+                <div class="wish">
+
+                    <p>
+                        Wishing you a very Happy Birthday,
+                        Aishu! 💖
+                    </p>
+
+                    <p>
+                        May this beautiful year of your life
+                        bring you <strong>good health</strong>,
+                        endless <strong>happiness</strong>,
+                        peace, success, and countless
+                        beautiful memories.
+                    </p>
+
+                    <p>
+                        May every dream close to your heart
+                        come true, and may every new day
+                        give you another reason to smile.
+                    </p>
+
+                    <p class="final-wish">
+                        Have a wonderful birthday and
+                        an amazing year ahead! 🌸✨
+                    </p>
+
+                </div>
+
+                <div class="hearts">
+                    💕 💗 💖 💕 💗
+                </div>
+
+            </section>
+
+        <% } else { %>
+
+            <!-- ========================= -->
+            <!-- COUNTDOWN -->
+            <!-- ========================= -->
+
+            <section class="countdown-card">
+
+                <div class="top-balloons">
+                    <span>🎈</span>
+                    <span>🎈</span>
+                    <span>🎈</span>
+                </div>
+
+                <div class="cake">
+                    🎂
+                </div>
+
+                <p class="small-title">
+                    A special day is coming...
+                </p>
+
+                <h1>
+                    Birthday Countdown
+                </h1>
+
+                <p class="for-aishu">
+                    Something special is waiting for Aishu 💖
+                </p>
+
+                <div
+                    id="countdown"
+                    class="countdown"
+                    data-target="<%= birthday.targetTime %>"
+                >
+
+                    <div class="time-box">
+                        <span id="days">
+                            <%= birthday.days %>
+                        </span>
+                        <small>Days</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="hours">
+                            <%= String(birthday.hours).padStart(2, "0") %>
+                        </span>
+                        <small>Hours</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="minutes">
+                            <%= String(birthday.minutes).padStart(2, "0") %>
+                        </span>
+                        <small>Minutes</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="seconds">
+                            <%= String(birthday.seconds).padStart(2, "0") %>
+                        </span>
+                        <small>Seconds</small>
+                    </div>
+
+                </div>
+
+                <p class="countdown-message">
+                    Until September 1 at 12:00 AM 🎉
+                </p>
+
+                <div class="decorations">
+                    🎈 🎂 🎈
+                </div>
+
+            </section>
+
+        <% } %>
+
+        <form
+            method="POST"
+            action="/logout"
+            class="logout-form"
+        >
+            <button type="submit" class="logout-button">
+                Logout
+            </button>
+        </form>
+
+    </main>
+
+    <% if (!birthday.isBirthday) { %>
+
+    <script>
+
+        const countdown =
+            document.getElementById("countdown");
+
+        const target =
+            Number(countdown.dataset.target);
+
+        function updateCountdown() {
+
+            const now = Date.now();
+
+            let difference =
+                Math.max(0, target - now);
+
+            const totalSeconds =
+                Math.floor(difference / 1000);
+
+            const days =
+                Math.floor(totalSeconds / 86400);
+
+            const hours =
+                Math.floor(
+                    (totalSeconds % 86400) / 3600
+                );
+
+            const minutes =
+                Math.floor(
+                    (totalSeconds % 3600) / 60
+                );
+
+            const seconds =
+                totalSeconds % 60;
+
+            document.getElementById("days")
+                .textContent = days;
+
+            document.getElementById("hours")
+                .textContent =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes")
+                .textContent =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds")
+                .textContent =
+                String(seconds).padStart(2, "0");
+
+            if (difference <= 0) {
+
+                /*
+                 * Reload so that the server-side
+                 * birthday check switches the page
+                 * to the birthday greeting.
+                 */
+                window.location.reload();
+
+            }
+        }
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+    </script>
+
+    <% } %>
+
+</body>
+</html>

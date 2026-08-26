@@ -1,0 +1,549 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #542044;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #ffe8f3,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #dff6ff,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #f3edff,
+            #eafaff
+        );
+}
+
+/* --------------------------
+   LOGIN
+-------------------------- */
+
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    position: relative;
+    width: min(430px, 100%);
+    padding: 42px 34px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(103, 53, 104, 0.2),
+        0 5px 20px rgba(103, 53, 104, 0.08);
+
+    backdrop-filter: blur(15px);
+}
+
+.cake-small {
+    font-size: 72px;
+    margin-bottom: 10px;
+}
+
+.login-card h1 {
+    margin: 0 0 10px;
+    color: #c52b72;
+    font-size: 34px;
+}
+
+.login-subtitle {
+    color: #77586d;
+    margin-bottom: 28px;
+}
+
+.login-card label {
+    display: block;
+    text-align: left;
+    margin: 15px 0 7px;
+    font-weight: 600;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 14px 16px;
+
+    border: 2px solid #f0d7e5;
+    border-radius: 14px;
+
+    font-size: 16px;
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.login-card input:focus {
+    border-color: #e66da2;
+    box-shadow: 0 0 0 4px rgba(230, 109, 162, 0.12);
+}
+
+.login-card button {
+    width: 100%;
+    margin-top: 24px;
+    padding: 15px;
+
+    border: 0;
+    border-radius: 14px;
+
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83e8c,
+            #9b51e0
+        );
+
+    box-shadow:
+        0 10px 25px rgba(190, 62, 140, 0.25);
+
+    transition: transform 0.2s;
+}
+
+.login-card button:hover {
+    transform: translateY(-2px);
+}
+
+.error-message {
+    padding: 11px;
+    border-radius: 10px;
+    background: #ffe1e1;
+    color: #a32020;
+    font-size: 14px;
+}
+
+.login-balloon {
+    position: absolute;
+    font-size: 48px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.balloon-one {
+    left: -30px;
+    top: 35px;
+}
+
+.balloon-two {
+    right: -30px;
+    top: 90px;
+    animation-delay: 1s;
+}
+
+/* --------------------------
+   MAIN
+-------------------------- */
+
+.birthday-container {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+}
+
+.countdown-card,
+.birthday-card {
+    position: relative;
+
+    width: min(850px, 100%);
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.86);
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 30px 90px rgba(108, 56, 120, 0.18);
+
+    backdrop-filter: blur(15px);
+}
+
+/* --------------------------
+   COUNTDOWN
+-------------------------- */
+
+.top-balloons {
+    font-size: 60px;
+    margin-bottom: 10px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+.cake {
+    font-size: 105px;
+
+    filter:
+        drop-shadow(
+            0 15px 12px rgba(80, 30, 70, 0.15)
+        );
+
+    animation:
+        cakeFloat 3s ease-in-out infinite;
+}
+
+.small-title {
+    color: #bd4c85;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.countdown-card h1 {
+    margin: 10px 0;
+    color: #c52b72;
+    font-size: clamp(35px, 7vw, 60px);
+}
+
+.for-aishu {
+    font-size: 20px;
+    color: #73566b;
+}
+
+.countdown {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 35px auto;
+
+    max-width: 680px;
+}
+
+.time-box {
+    padding: 22px 12px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff4fa,
+            #f4efff
+        );
+
+    box-shadow:
+        0 10px 25px rgba(126, 74, 130, 0.08);
+}
+
+.time-box span {
+    display: block;
+
+    color: #c52b72;
+
+    font-size:
+        clamp(32px, 6vw, 52px);
+
+    font-weight: 800;
+}
+
+.time-box small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #806778;
+
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.countdown-message {
+    color: #806778;
+    font-size: 17px;
+}
+
+.decorations {
+    margin-top: 25px;
+    font-size: 45px;
+}
+
+/* --------------------------
+   BIRTHDAY
+-------------------------- */
+
+.birthday-card {
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.95),
+            rgba(255,240,248,0.95)
+        );
+}
+
+.confetti {
+    font-size: 25px;
+    letter-spacing: 10px;
+    margin-bottom: 15px;
+}
+
+.balloons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+.balloon {
+    display: inline-block;
+    font-size: 60px;
+
+    animation:
+        float 2.5s ease-in-out infinite;
+}
+
+.balloon:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.balloon:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.balloon:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+.happy-birthday {
+    margin: 10px 0 20px;
+
+    color: #e02e78;
+
+    font-size:
+        clamp(42px, 8vw, 76px);
+
+    line-height: 1.05;
+
+    text-shadow:
+        0 5px 15px rgba(224, 46, 120, 0.15);
+}
+
+.wish {
+    max-width: 650px;
+    margin: 0 auto;
+
+    color: #684f62;
+
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.wish strong {
+    color: #d22d76;
+}
+
+.final-wish {
+    color: #b82f70;
+    font-weight: 700;
+}
+
+.hearts {
+    margin-top: 25px;
+    font-size: 30px;
+}
+
+/* --------------------------
+   BACKGROUND BALLOONS
+-------------------------- */
+
+.background-balloons {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: -1;
+}
+
+.background-balloons span {
+    position: absolute;
+
+    font-size: 55px;
+
+    opacity: 0.35;
+
+    animation:
+        floatAcross 10s ease-in-out infinite;
+}
+
+.background-balloons span:nth-child(1) {
+    left: 5%;
+    top: 10%;
+}
+
+.background-balloons span:nth-child(2) {
+    right: 8%;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.background-balloons span:nth-child(3) {
+    left: 12%;
+    bottom: 12%;
+    animation-delay: 4s;
+}
+
+.background-balloons span:nth-child(4) {
+    right: 15%;
+    bottom: 10%;
+    animation-delay: 1s;
+}
+
+.background-balloons span:nth-child(5) {
+    left: 45%;
+    top: 5%;
+    animation-delay: 3s;
+}
+
+.background-balloons span:nth-child(6) {
+    right: 45%;
+    bottom: 5%;
+    animation-delay: 5s;
+}
+
+/* --------------------------
+   LOGOUT
+-------------------------- */
+
+.logout-form {
+    margin-top: 18px;
+}
+
+.logout-button {
+    border: 0;
+    background: transparent;
+
+    color: #8c7182;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.logout-button:hover {
+    color: #d22d76;
+}
+
+/* --------------------------
+   ANIMATIONS
+-------------------------- */
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+
+@keyframes cakeFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes floatAcross {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(5deg);
+    }
+}
+
+/* --------------------------
+   MOBILE
+-------------------------- */
+
+@media (max-width: 600px) {
+
+    .countdown-card,
+    .birthday-card {
+        padding: 40px 18px;
+        border-radius: 28px;
+    }
+
+    .countdown {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .balloon {
+        font-size: 45px;
+    }
+
+    .happy-birthday {
+        font-size: 44px;
+    }
+
+    .wish {
+        font-size: 17px;
+    }
+
+    .login-balloon {
+        display: none;
+    }
+}
